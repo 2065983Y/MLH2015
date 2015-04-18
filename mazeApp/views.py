@@ -22,6 +22,10 @@ def challenge(request):
             form.save()
             context_dict["status"] = "success"
             context_dict["link"] = "127.0.0.1:8000/solve/" + form["name"].value()
+            print "info", form
+            receivers = [x.strip() for x in form['receivers'].value().split(",")]
+            maze_name = form['name'].value()
+            
         else:
             context_dict["status"] = "fail"
         return render(request, "mazeApp/share.html", context_dict)
@@ -34,6 +38,7 @@ def challenge(request):
         grid = getImageAsList(filename)
         context_dict["isSolvable"] =  len(aStar(grid)) != 0
         context_dict["mazeName"] = os.path.splitext(os.path.basename(filename))[0]
+        context_dict["absPath"] = filename
         context_dict["width"] = getImageWidth(filename)
         context_dict["height"] = getImageHeight(filename)
         context_dict["form"] = form
