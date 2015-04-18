@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %} Share the mighty creation of {{ mazeName }} {% endblock %}
+
+{% block css_libs %}
+    <link href="{% static 'css/grid.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body_block %}
+
+    <h3> You are currently solving {{ maze_name }}</h3>
+
+    <rows id="rows" value="{{ maze_rows }}"></rows>
+    <cols id="cols" value="{{ maze_cols }}"></cols>
+    <cells id="cells" value="{{ maze_cells }}"></cells>
+
+{% endblock %}
+
+{% block js_libs %}
+    <script src="{% static 'javascript/solve-maze.js' %}" type="text/javascript"></script>
+{% endblock%}
