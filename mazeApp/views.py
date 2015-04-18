@@ -25,7 +25,7 @@ def challenge(request):
             print "info", form
             receivers = [x.strip() for x in form['receivers'].value().split(",")]
             maze_name = form['name'].value()
-            
+            #TODO send emails & shit
         else:
             context_dict["status"] = "fail"
         return render(request, "mazeApp/share.html", context_dict)
